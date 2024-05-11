@@ -1,22 +1,22 @@
 import { setup } from "./utils/setup";
-import { draw } from "./draw/periodic-function-03";
+import { draw } from "./draw/keyframe-test-02";
 import { generateZip } from "./utils/zip";
 import "./style.css";
 
-const loop = true;
+const loop = false;
 const saveFrames = true;
 const [canvas, context] = setup();
 const counter = document.querySelector("#elapsed-time");
 
-const seconds = 6;
+const secondsPerLoop = 2;
 const framesPerSecond = 60;
-const framesPerLoop = framesPerSecond * seconds;
-const numLoops = 1;
+const framesPerLoop = framesPerSecond * secondsPerLoop;
+const numLoops = 8;
 const numFrames = framesPerLoop * numLoops;
 let frameCount = 0;
 
 function animate() {
-  const frames = draw(canvas, context, frameCount, framesPerLoop);
+  const frames = draw(canvas, context, frameCount, framesPerLoop, numLoops);
 
   frameCount += 1;
   counter.innerHTML = (frameCount / framesPerSecond).toFixed(1);
